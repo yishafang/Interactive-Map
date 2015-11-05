@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet UIView *highlightView;
+@property (strong, nonatomic) IBOutlet UIView *highlightView;
 
 @property (strong, nonatomic) NSArray *array;
 
@@ -70,6 +70,11 @@
 #pragma Search Methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    // Delete previous highlight
+    if ([self.highlightView isDescendantOfView:scrollView]) {
+        [self.highlightView removeFromSuperview];
+    }
+    
     NSString *inputStr = searchBar.text;
     NSLog(@"%@", inputStr);
     
@@ -95,13 +100,25 @@
 
 - (void)highlightBuilding:(NSString *)building {
     NSLog(@"In highlightBuilding");
-    //self.highlightView.opaque = NO;
-    //self.highlightView.layer.borderColor = [UIColor redColor].CGColor;
+    
+    if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(86, 196, 68, 85)];
+    } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(358, 196, 95, 97)];
+    } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(82, 409, 63, 63)];
+    } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(354, 311, 116, 50)];
+    } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(552, 359, 63, 50)];
+    } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(219, 570, 107, 74)];
+    }
+    
     self.highlightView.alpha = 0.3;
     self.highlightView.backgroundColor = [UIColor redColor];
-    self.highlightView.frame = CGRectMake(552, 359, 63, 50);
     
-    [imageView addSubview:highlightView];
+    [scrollView addSubview:self.highlightView];
 }
 
 @end
