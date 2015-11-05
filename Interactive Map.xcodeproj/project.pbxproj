@@ -14,6 +14,8 @@
 		B61A81201BE2E06800F1BE1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B61A811F1BE2E06800F1BE1E /* Images.xcassets */; };
 		B61A81231BE2E06800F1BE1E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61A81211BE2E06800F1BE1E /* LaunchScreen.xib */; };
 		B61A812F1BE2E06800F1BE1E /* Interactive_MapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B61A812E1BE2E06800F1BE1E /* Interactive_MapTests.m */; };
+		B64A73531BEA8F6C002C954D /* campusmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B64A73521BEA8F6C002C954D /* campusmap.jpg */; };
+		B64A73561BEAA65C002C954D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64A73551BEAA65C002C954D /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		B61A81281BE2E06800F1BE1E /* Interactive MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Interactive MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61A812D1BE2E06800F1BE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B61A812E1BE2E06800F1BE1E /* Interactive_MapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Interactive_MapTests.m; sourceTree = "<group>"; };
+		B64A73521BEA8F6C002C954D /* campusmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campusmap.jpg; sourceTree = "<group>"; };
+		B64A73541BEAA65C002C954D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B64A73551BEAA65C002C954D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +91,12 @@
 				B61A81191BE2E06800F1BE1E /* ViewController.h */,
 				B61A811A1BE2E06800F1BE1E /* ViewController.m */,
 				B61A811C1BE2E06800F1BE1E /* Main.storyboard */,
+				B64A73521BEA8F6C002C954D /* campusmap.jpg */,
 				B61A811F1BE2E06800F1BE1E /* Images.xcassets */,
 				B61A81211BE2E06800F1BE1E /* LaunchScreen.xib */,
 				B61A81121BE2E06800F1BE1E /* Supporting Files */,
+				B64A73541BEAA65C002C954D /* DetailViewController.h */,
+				B64A73551BEAA65C002C954D /* DetailViewController.m */,
 			);
 			path = "Interactive Map";
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 				B61A811E1BE2E06800F1BE1E /* Main.storyboard in Resources */,
 				B61A81231BE2E06800F1BE1E /* LaunchScreen.xib in Resources */,
 				B61A81201BE2E06800F1BE1E /* Images.xcassets in Resources */,
+				B64A73531BEA8F6C002C954D /* campusmap.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +231,7 @@
 				B61A811B1BE2E06800F1BE1E /* ViewController.m in Sources */,
 				B61A81181BE2E06800F1BE1E /* AppDelegate.m in Sources */,
 				B61A81151BE2E06800F1BE1E /* main.m in Sources */,
+				B64A73561BEAA65C002C954D /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +426,7 @@
 				B61A81341BE2E06800F1BE1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B61A81351BE2E06800F1BE1E /* Build configuration list for PBXNativeTarget "Interactive MapTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +435,7 @@
 				B61A81371BE2E06800F1BE1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

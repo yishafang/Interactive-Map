@@ -8,20 +8,100 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate>
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIView *highlightView;
+
+@property (strong, nonatomic) NSArray *array;
 
 @end
 
 @implementation ViewController
+@synthesize imageView;
+@synthesize scrollView;
+@synthesize highlightView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = self.imageView.image.size;
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    
+    self.array = [[NSArray alloc] initWithObjects:@"King Library", @"Engineering Building", @"Yoshihiro Uchida Hall", @"Student Union", @"BBC", @"South Parking Garage", nil];
+    
+    UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+    [scrollView addGestureRecognizer:rec];
+    NSLog(@"cool");
+}
+
+- (void)tapRecognized:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"In tapRecognized!");
+    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+        CGPoint point = [recognizer locationInView:recognizer.view];
+        // point.x and point.y have the coordinates of the touch
+        NSLog(@"%lf %lf", point.x, point.y);
+        
+        // open detail view controller
+//        self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+//        [self presentedViewController:self.detailViewController animated:YES completion:nil];
+    }
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    // return which subview we want to zoom
+    return self.imageView;
+}
+
+- (void)viewDidUnload {
+    [self setImageView:nil];
+    [self setScrollView:nil];
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma Search Methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *inputStr = searchBar.text;
+    NSLog(@"%@", inputStr);
+    
+    Boolean hasBuilding =false;
+    for (int i = 0; i < [self.array count]; i++) {
+        NSString *buildingName = [self.array objectAtIndex:i];
+        //NSLog(@"name in array is: %@", buildingName);
+        if ([inputStr isEqualToString:buildingName]) {
+            hasBuilding = true;
+            break;
+        } else {
+            hasBuilding = false;
+        }
+    }
+    
+    if (hasBuilding) {
+        NSLog(@"has building: %@ ", inputStr);
+        [self highlightBuilding:inputStr];
+    } else {
+        NSLog(@"No result.");
+    }
+}
+
+- (void)highlightBuilding:(NSString *)building {
+    NSLog(@"In highlightBuilding");
+    //self.highlightView.opaque = NO;
+    //self.highlightView.layer.borderColor = [UIColor redColor].CGColor;
+    self.highlightView.alpha = 0.3;
+    self.highlightView.backgroundColor = [UIColor redColor];
+    self.highlightView.frame = CGRectMake(552, 359, 63, 50);
+    
+    [imageView addSubview:highlightView];
 }
 
 @end

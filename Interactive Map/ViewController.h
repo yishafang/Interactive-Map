@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class DetailViewController;
 
+@interface ViewController : UIViewController <UISearchDisplayDelegate>
+
+@property (strong, nonatomic) DetailViewController *detailViewController;
 
 @end
 
