@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -14,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UIView *highlightView;
+
+@property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (strong, nonatomic) NSArray *array;
 
@@ -30,8 +33,19 @@
     self.scrollView.delegate = self;
     self.scrollView.contentSize = self.imageView.image.size;
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    self.imageView.userInteractionEnabled = YES;
     
     self.array = [[NSArray alloc] initWithObjects:@"King Library", @"Engineering Building", @"Yoshihiro Uchida Hall", @"Student Union", @"BBC", @"South Parking Garage", nil];
+    
+    // Hard code user current location for testing
+    self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(529, 188, 5, 5)];
+    self.currentLocation.opaque = 1;
+    self.currentLocation.backgroundColor = [UIColor redColor];
+    [scrollView addSubview:self.currentLocation];
+    
+    // Set user current location as a small red circle
+    self.currentLocation.clipsToBounds = YES;
+    [self setRoundedView:_currentLocation toDiameter:15.0];
     
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
     [scrollView addGestureRecognizer:rec];
@@ -67,6 +81,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* Set UIImageView to circle shape */
+-(void)setRoundedView:(UIImageView *)roundedView toDiameter:(float)newSize {
+    CGPoint saveCenter = roundedView.center;
+    CGRect newFrame = CGRectMake(roundedView.frame.origin.x, roundedView.frame.origin.y, newSize, newSize);
+    roundedView.frame = newFrame;
+    roundedView.layer.cornerRadius = newSize / 2.0;
+    roundedView.center = saveCenter;
+}
+
 #pragma Search Methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -98,8 +121,9 @@
     }
 }
 
+/* Highlight the building which user is searing for */
 - (void)highlightBuilding:(NSString *)building {
-    NSLog(@"In highlightBuilding");
+    //NSLog(@"In highlightBuilding");
     
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(86, 196, 68, 85)];
