@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -30,8 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.scrollView.delegate = self;
+    self.scrollView.minimumZoomScale = 0.3f;
+    self.scrollView.maximumZoomScale = 3.0f;
     self.scrollView.contentSize = self.imageView.image.size;
+    self.scrollView.delegate = self;
+    
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     self.imageView.userInteractionEnabled = YES;
     
@@ -68,6 +70,10 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     // return which subview we want to zoom
     return self.imageView;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
 }
 
 - (void)viewDidUnload {
@@ -127,22 +133,39 @@
     
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(86, 196, 68, 85)];
+        [self zoomMapAndCenterAtPointX:86 andPointY:196];
+       
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(358, 196, 95, 97)];
+        [self zoomMapAndCenterAtPointX:358 andPointY:196];
+        
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(82, 409, 63, 63)];
+        [self zoomMapAndCenterAtPointX:82 andPointY:409];
+        
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(354, 311, 116, 50)];
+        [self zoomMapAndCenterAtPointX:354 andPointY:311];
+        
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(552, 359, 63, 50)];
+        [self zoomMapAndCenterAtPointX:552 andPointY:359];
+        
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(219, 570, 107, 74)];
+        [self zoomMapAndCenterAtPointX:219 andPointY:570];
     }
     
     self.highlightView.alpha = 0.3;
     self.highlightView.backgroundColor = [UIColor redColor];
     
     [scrollView addSubview:self.highlightView];
+}
+
+/* Zoom map and center at pointX and pointY */
+-(void)zoomMapAndCenterAtPointX:(double) x andPointY:(double) y {
+    CGPoint p = CGPointMake(x-self.scrollView.bounds.size.width/2, y-self.scrollView.bounds.size.height/2);
+    [scrollView setContentOffset:p animated:YES];
 }
 
 @end

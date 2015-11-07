@@ -20,7 +20,7 @@
                                 <rect key="frame" x="-20" y="64" width="360" height="520"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="campusmap.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FaV-us-4m3">
-                                        <rect key="frame" x="20" y="1" width="320" height="504"/>
+                                        <rect key="frame" x="20" y="0.0" width="320" height="504"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -80,7 +80,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Building Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-qb-5Ok">
                                 <rect key="frame" x="101" y="141" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
