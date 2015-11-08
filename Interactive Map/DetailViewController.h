@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BuildingDetail.h"
 
 @interface DetailViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIImageView *photo;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *distance;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+
+@property (strong, nonatomic) BuildingDetail *buildingDetail;
 
 @end

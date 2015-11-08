@@ -16,6 +16,13 @@
 		B61A812F1BE2E06800F1BE1E /* Interactive_MapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B61A812E1BE2E06800F1BE1E /* Interactive_MapTests.m */; };
 		B64A73531BEA8F6C002C954D /* campusmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B64A73521BEA8F6C002C954D /* campusmap.jpg */; };
 		B64A73561BEAA65C002C954D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64A73551BEAA65C002C954D /* DetailViewController.m */; };
+		B6B33E231BEED25B00A7043F /* BuildingDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B33E221BEED25B00A7043F /* BuildingDetail.m */; };
+		B6B33E291BEED7BA00A7043F /* YUH.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E241BEED7BA00A7043F /* YUH.jpg */; };
+		B6B33E2A1BEED7BA00A7043F /* studentUnion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E251BEED7BA00A7043F /* studentUnion.jpg */; };
+		B6B33E2B1BEED7BA00A7043F /* kingLibrary.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E261BEED7BA00A7043F /* kingLibrary.jpg */; };
+		B6B33E2C1BEED7BA00A7043F /* engineeringBuilding.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E271BEED7BA00A7043F /* engineeringBuilding.jpg */; };
+		B6B33E2D1BEED7BA00A7043F /* BBC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E281BEED7BA00A7043F /* BBC.jpg */; };
+		B6B33E2F1BEED7EE00A7043F /* SPG.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B33E2E1BEED7EE00A7043F /* SPG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,14 @@
 		B64A73521BEA8F6C002C954D /* campusmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campusmap.jpg; sourceTree = "<group>"; };
 		B64A73541BEAA65C002C954D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		B64A73551BEAA65C002C954D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B6B33E211BEED25B00A7043F /* BuildingDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetail.h; sourceTree = "<group>"; };
+		B6B33E221BEED25B00A7043F /* BuildingDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetail.m; sourceTree = "<group>"; };
+		B6B33E241BEED7BA00A7043F /* YUH.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = YUH.jpg; sourceTree = "<group>"; };
+		B6B33E251BEED7BA00A7043F /* studentUnion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = studentUnion.jpg; sourceTree = "<group>"; };
+		B6B33E261BEED7BA00A7043F /* kingLibrary.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kingLibrary.jpg; sourceTree = "<group>"; };
+		B6B33E271BEED7BA00A7043F /* engineeringBuilding.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = engineeringBuilding.jpg; sourceTree = "<group>"; };
+		B6B33E281BEED7BA00A7043F /* BBC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BBC.jpg; sourceTree = "<group>"; };
+		B6B33E2E1BEED7EE00A7043F /* SPG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +106,20 @@
 				B61A81191BE2E06800F1BE1E /* ViewController.h */,
 				B61A811A1BE2E06800F1BE1E /* ViewController.m */,
 				B61A811C1BE2E06800F1BE1E /* Main.storyboard */,
+				B6B33E211BEED25B00A7043F /* BuildingDetail.h */,
+				B6B33E221BEED25B00A7043F /* BuildingDetail.m */,
 				B64A73521BEA8F6C002C954D /* campusmap.jpg */,
 				B61A811F1BE2E06800F1BE1E /* Images.xcassets */,
 				B61A81211BE2E06800F1BE1E /* LaunchScreen.xib */,
 				B61A81121BE2E06800F1BE1E /* Supporting Files */,
 				B64A73541BEAA65C002C954D /* DetailViewController.h */,
 				B64A73551BEAA65C002C954D /* DetailViewController.m */,
+				B6B33E241BEED7BA00A7043F /* YUH.jpg */,
+				B6B33E2E1BEED7EE00A7043F /* SPG.png */,
+				B6B33E251BEED7BA00A7043F /* studentUnion.jpg */,
+				B6B33E261BEED7BA00A7043F /* kingLibrary.jpg */,
+				B6B33E271BEED7BA00A7043F /* engineeringBuilding.jpg */,
+				B6B33E281BEED7BA00A7043F /* BBC.jpg */,
 			);
 			path = "Interactive Map";
 			sourceTree = "<group>";
@@ -208,9 +231,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61A811E1BE2E06800F1BE1E /* Main.storyboard in Resources */,
+				B6B33E2A1BEED7BA00A7043F /* studentUnion.jpg in Resources */,
 				B61A81231BE2E06800F1BE1E /* LaunchScreen.xib in Resources */,
+				B6B33E2D1BEED7BA00A7043F /* BBC.jpg in Resources */,
 				B61A81201BE2E06800F1BE1E /* Images.xcassets in Resources */,
+				B6B33E2B1BEED7BA00A7043F /* kingLibrary.jpg in Resources */,
+				B6B33E291BEED7BA00A7043F /* YUH.jpg in Resources */,
 				B64A73531BEA8F6C002C954D /* campusmap.jpg in Resources */,
+				B6B33E2F1BEED7EE00A7043F /* SPG.png in Resources */,
+				B6B33E2C1BEED7BA00A7043F /* engineeringBuilding.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +260,7 @@
 				B61A811B1BE2E06800F1BE1E /* ViewController.m in Sources */,
 				B61A81181BE2E06800F1BE1E /* AppDelegate.m in Sources */,
 				B61A81151BE2E06800F1BE1E /* main.m in Sources */,
+				B6B33E231BEED25B00A7043F /* BuildingDetail.m in Sources */,
 				B64A73561BEAA65C002C954D /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

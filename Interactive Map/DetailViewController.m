@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -17,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.name.text = _buildingDetail.name;
+    self.address.text = _buildingDetail.address;
+    self.photo.image = [UIImage imageNamed:_buildingDetail.imageFile];
+    // Add distance and time later!
 }
 
 - (void)didReceiveMemoryWarning {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -65,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="-124" y="116"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="fF0-Wb-PCG">
             <objects>
-                <viewController id="ijQ-Ql-61x" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="ijQ-Ql-61x" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z1q-ld-ZGe"/>
                         <viewControllerLayoutGuide type="bottom" id="zvt-1a-f94"/>
@@ -77,15 +78,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Building Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-qb-5Ok">
-                                <rect key="frame" x="101" y="141" width="118" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-qb-5Ok">
+                                <rect key="frame" x="135" y="273" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4P-W0-4TX">
+                                <rect key="frame" x="126" y="328" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv3-9s-Rrf">
+                                <rect key="frame" x="124" y="380" width="72" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpx-H3-c8R">
+                                <rect key="frame" x="139" y="431" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-eI-pA1">
+                                <rect key="frame" x="16" y="40" width="288" height="203"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hpx-H3-c8R" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="431" id="NwD-xj-CV6"/>
+                            <constraint firstAttribute="centerX" secondItem="X4P-W0-4TX" secondAttribute="centerX" id="PMd-vt-0FO"/>
+                            <constraint firstAttribute="centerX" secondItem="NVV-qb-5Ok" secondAttribute="centerX" id="VAX-RC-gv1"/>
+                            <constraint firstAttribute="centerX" secondItem="vMq-eI-pA1" secondAttribute="centerX" id="XMx-IP-0gH"/>
+                            <constraint firstAttribute="centerX" secondItem="Hpx-H3-c8R" secondAttribute="centerX" id="cXb-qR-GaQ"/>
+                            <constraint firstItem="vMq-eI-pA1" firstAttribute="top" secondItem="Z1q-ld-ZGe" secondAttribute="bottom" constant="20" id="e1J-Bw-slM"/>
+                            <constraint firstAttribute="centerX" secondItem="Hv3-9s-Rrf" secondAttribute="centerX" id="eNr-Cq-YBx"/>
+                            <constraint firstItem="X4P-W0-4TX" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="328" id="fJ4-G4-lxG"/>
+                            <constraint firstItem="Hv3-9s-Rrf" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="380" id="gg0-Z2-FM9"/>
+                            <constraint firstItem="NVV-qb-5Ok" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="273" id="xGN-2w-ppf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="address" destination="X4P-W0-4TX" id="WiS-lW-pOh"/>
+                        <outlet property="distance" destination="Hv3-9s-Rrf" id="0PR-VP-yrX"/>
+                        <outlet property="image" destination="vMq-eI-pA1" id="Rga-PD-1RK"/>
+                        <outlet property="name" destination="NVV-qb-5Ok" id="ONI-dz-7hf"/>
+                        <outlet property="photo" destination="vMq-eI-pA1" id="Xzl-mP-Gb5"/>
+                        <outlet property="time" destination="Hpx-H3-c8R" id="PaL-2S-27z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg5-xq-v5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

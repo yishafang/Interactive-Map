@@ -7,17 +7,20 @@
 //
 
 #import "ViewController.h"
+#import "BuildingDetail.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (strong, nonatomic) IBOutlet UIView *highlightView;
+@property (weak, nonatomic) IBOutlet UIView *subView;
 
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (strong, nonatomic) NSArray *array;
+@property (strong, nonatomic) NSArray *details;
 
 @end
 
@@ -28,6 +31,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Initialize building data
+    BuildingDetail *KL = [BuildingDetail new];
+    KL.name = @"King Library";
+    KL.address = @"Dr. Martin Luther King, Jr. Library, 150 East San Fernando Street, San Jose, CA 95112";
+    KL.imageFile = @"kingLibrary.jpg";
+    
+    self.details = [NSArray arrayWithObjects:KL, nil];
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
     self.scrollView.minimumZoomScale = 0.3f;
     self.scrollView.maximumZoomScale = 3.0f;
@@ -40,6 +54,7 @@
     self.array = [[NSArray alloc] initWithObjects:@"King Library", @"Engineering Building", @"Yoshihiro Uchida Hall", @"Student Union", @"BBC", @"South Parking Garage", nil];
     
     // Hard code user current location for testing
+    // This is wrong! Fix it later!!
     self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(529, 188, 5, 5)];
     self.currentLocation.opaque = 1;
     self.currentLocation.backgroundColor = [UIColor redColor];
@@ -62,14 +77,16 @@
         NSLog(@"%lf %lf", point.x, point.y);
         
         // open detail view controller
-//        self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-//        [self presentedViewController:self.detailViewController animated:YES completion:nil];
+//        DetailViewController* detailViewController = [[DetailViewController alloc] init];
+        
     }
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     // return which subview we want to zoom
     return self.imageView;
+//    [self.scrollView addSubview:self.subView];
+//    return [self.scrollView.subviews objectAtIndex:0];
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
@@ -94,6 +111,13 @@
     roundedView.frame = newFrame;
     roundedView.layer.cornerRadius = newSize / 2.0;
     roundedView.center = saveCenter;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"DetailViewController"]) {
+        DetailViewController *detailViewController = segue.destinationViewController;
+        detailViewController.buildingDetail = [_details objectAtIndex:0];
+    }
 }
 
 #pragma Search Methods
@@ -133,27 +157,27 @@
     
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(86, 196, 68, 85)];
-        [self zoomMapAndCenterAtPointX:86 andPointY:196];
+        [self zoomMapAndCenterAtPointX:86+68/2 andPointY:196+85/2];
        
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(358, 196, 95, 97)];
-        [self zoomMapAndCenterAtPointX:358 andPointY:196];
+        [self zoomMapAndCenterAtPointX:358+95/2 andPointY:196+97/2];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(82, 409, 63, 63)];
-        [self zoomMapAndCenterAtPointX:82 andPointY:409];
+        [self zoomMapAndCenterAtPointX:82+63/2 andPointY:409+63/2];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(354, 311, 116, 50)];
-        [self zoomMapAndCenterAtPointX:354 andPointY:311];
+        [self zoomMapAndCenterAtPointX:354+116/2 andPointY:311+50/2];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(552, 359, 63, 50)];
-        [self zoomMapAndCenterAtPointX:552 andPointY:359];
+        [self zoomMapAndCenterAtPointX:552+63/2 andPointY:359+50/2];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(219, 570, 107, 74)];
-        [self zoomMapAndCenterAtPointX:219 andPointY:570];
+        [self zoomMapAndCenterAtPointX:219+107/2 andPointY:570+74/2];
     }
     
     self.highlightView.alpha = 0.3;
@@ -163,9 +187,11 @@
 }
 
 /* Zoom map and center at pointX and pointY */
+// Something wrong with zoom!!
 -(void)zoomMapAndCenterAtPointX:(double) x andPointY:(double) y {
     CGPoint p = CGPointMake(x-self.scrollView.bounds.size.width/2, y-self.scrollView.bounds.size.height/2);
     [scrollView setContentOffset:p animated:YES];
+    
 }
 
 @end

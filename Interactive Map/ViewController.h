@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@class DetailViewController;
+//@class DetailViewController;
 
 @interface ViewController : UIViewController <UISearchDisplayDelegate>
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
+//@property (strong, nonatomic) DetailViewController *detailViewController;
 
 @end
 
