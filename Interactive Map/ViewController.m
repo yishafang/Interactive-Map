@@ -58,7 +58,7 @@
     self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(529, 188, 5, 5)];
     self.currentLocation.opaque = 1;
     self.currentLocation.backgroundColor = [UIColor redColor];
-    [scrollView addSubview:self.currentLocation];
+    [imageView addSubview:self.currentLocation];
     
     // Set user current location as a small red circle
     self.currentLocation.clipsToBounds = YES;
@@ -68,6 +68,7 @@
     [scrollView addGestureRecognizer:rec];
     NSLog(@"cool");
 }
+
 
 - (void)tapRecognized:(UITapGestureRecognizer *)recognizer {
     NSLog(@"In tapRecognized!");
@@ -156,41 +157,50 @@
     //NSLog(@"In highlightBuilding");
     
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(86, 196, 68, 85)];
-        [self zoomMapAndCenterAtPointX:86+68/2 andPointY:196+85/2];
+        [self zoomMapAndCenterAtPointX:73+48/2 andPointY:194+87/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(73, 194, 48, 87)];
        
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(358, 196, 95, 97)];
-        [self zoomMapAndCenterAtPointX:358+95/2 andPointY:196+97/2];
+        [self zoomMapAndCenterAtPointX:342+93/2 andPointY:196+102/2];
+        self.highlightView = [[UIView alloc] init];
+        [highlightView setFrame: CGRectMake(342, 196, 93, 102)];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(82, 409, 63, 63)];
-        [self zoomMapAndCenterAtPointX:82+63/2 andPointY:409+63/2];
+        [self zoomMapAndCenterAtPointX:62+66/2 andPointY:407+65/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(62, 407, 66, 65)];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(354, 311, 116, 50)];
-        [self zoomMapAndCenterAtPointX:354+116/2 andPointY:311+50/2];
+        [self zoomMapAndCenterAtPointX:337+86/2 andPointY:309+40/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(337, 311, 86, 40)];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(552, 359, 63, 50)];
-        [self zoomMapAndCenterAtPointX:552+63/2 andPointY:359+50/2];
+        [self zoomMapAndCenterAtPointX:530+63/2 andPointY:359+50/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(530, 359, 63, 50)];
         
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(219, 570, 107, 74)];
-        [self zoomMapAndCenterAtPointX:219+107/2 andPointY:570+74/2];
+        [self zoomMapAndCenterAtPointX:197+113/2 andPointY:570+77/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(197, 570, 113, 77)];
     }
     
     self.highlightView.alpha = 0.3;
     self.highlightView.backgroundColor = [UIColor redColor];
     
-    [scrollView addSubview:self.highlightView];
+    [imageView addSubview:self.highlightView];
 }
+
 
 /* Zoom map and center at pointX and pointY */
 // Something wrong with zoom!!
 -(void)zoomMapAndCenterAtPointX:(double) x andPointY:(double) y {
-    CGPoint p = CGPointMake(x-self.scrollView.bounds.size.width/2, y-self.scrollView.bounds.size.height/2);
-    [scrollView setContentOffset:p animated:YES];
+    CGRect zoomRect;
+    zoomRect.size.height = scrollView.frame.size.height;
+    zoomRect.size.width  = scrollView.frame.size.width;
+    
+    zoomRect.origin.x = x - (zoomRect.size.width  / 2.0);
+    zoomRect.origin.y = y - (zoomRect.size.height / 2.0);
+    
+    
+    [scrollView zoomToRect:zoomRect animated:YES];
     
 }
 
