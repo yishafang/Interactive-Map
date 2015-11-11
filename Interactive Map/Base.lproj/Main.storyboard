@@ -53,6 +53,7 @@
                         <outlet property="scrollView" destination="3OV-JS-BmD" id="95r-Zx-MYD"/>
                         <outlet property="searchBar" destination="emp-E4-XsD" id="iYG-pS-3br"/>
                         <outlet property="searchDisplayController" destination="qoo-fv-ztl" id="XbP-mh-1Vg"/>
+                        <segue destination="ijQ-Ql-61x" kind="modal" identifier="detail" id="rsf-MW-fFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -80,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-qb-5Ok">
-                                <rect key="frame" x="135" y="273" width="51" height="21"/>
+                                <rect key="frame" x="135" y="289" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -97,14 +98,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpx-H3-c8R">
-                                <rect key="frame" x="139" y="431" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpx-H3-c8R">
+                                <rect key="frame" x="139" y="425" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-eI-pA1">
-                                <rect key="frame" x="16" y="40" width="288" height="203"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqE-T3-pWX">
+                                <rect key="frame" x="16" y="28" width="46" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="ijQ-Ql-61x" eventType="touchUpInside" id="0Wl-I8-fb1"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-eI-pA1">
+                                <rect key="frame" x="27" y="83" width="267" height="184"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -121,12 +129,12 @@
                             <constraint firstItem="NVV-qb-5Ok" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="273" id="xGN-2w-ppf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="s05-tH-Xbf"/>
                     <connections>
                         <outlet property="address" destination="X4P-W0-4TX" id="WiS-lW-pOh"/>
                         <outlet property="distance" destination="Hv3-9s-Rrf" id="0PR-VP-yrX"/>
-                        <outlet property="image" destination="vMq-eI-pA1" id="Rga-PD-1RK"/>
                         <outlet property="name" destination="NVV-qb-5Ok" id="ONI-dz-7hf"/>
-                        <outlet property="photo" destination="vMq-eI-pA1" id="Xzl-mP-Gb5"/>
+                        <outlet property="photo" destination="vMq-eI-pA1" id="2to-Cr-ah1"/>
                         <outlet property="time" destination="Hpx-H3-c8R" id="PaL-2S-27z"/>
                     </connections>
                 </viewController>

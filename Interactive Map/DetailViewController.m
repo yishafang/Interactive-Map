@@ -17,10 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Add distance and time later!
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.name.text = _buildingDetail.name;
     self.address.text = _buildingDetail.address;
+    [self.photo setContentMode:UIViewContentModeScaleAspectFit];
     self.photo.image = [UIImage imageNamed:_buildingDetail.imageFile];
-    // Add distance and time later!
+    
+    
+}
+- (IBAction)close:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

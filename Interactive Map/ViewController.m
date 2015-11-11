@@ -19,8 +19,10 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
+
 @property (strong, nonatomic) NSArray *array;
 @property (strong, nonatomic) NSArray *details;
+
 
 @end
 
@@ -115,9 +117,9 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"DetailViewController"]) {
+    if ([segue.identifier isEqualToString:@"detail"]) {
         DetailViewController *detailViewController = segue.destinationViewController;
-        detailViewController.buildingDetail = [_details objectAtIndex:0];
+        detailViewController.buildingDetail =[_details objectAtIndex:0];
     }
 }
 
@@ -155,40 +157,58 @@
 /* Highlight the building which user is searing for */
 - (void)highlightBuilding:(NSString *)building {
     //NSLog(@"In highlightBuilding");
-    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(tapShowDetail:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Test" forState:UIControlStateNormal];
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
         [self zoomMapAndCenterAtPointX:73+48/2 andPointY:194+87/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(73, 194, 48, 87)];
-       
+        button.frame = CGRectMake(73, 194, 48, 87);
+        
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
         [self zoomMapAndCenterAtPointX:342+93/2 andPointY:196+102/2];
         self.highlightView = [[UIView alloc] init];
         [highlightView setFrame: CGRectMake(342, 196, 93, 102)];
+        button.frame = CGRectMake(342, 196, 93, 102);
         
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
         [self zoomMapAndCenterAtPointX:62+66/2 andPointY:407+65/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(62, 407, 66, 65)];
+        button.frame = CGRectMake(62, 407, 66, 65);
         
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
         [self zoomMapAndCenterAtPointX:337+86/2 andPointY:309+40/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(337, 311, 86, 40)];
+        button.frame = CGRectMake(337, 311, 86, 40);
         
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
         [self zoomMapAndCenterAtPointX:530+63/2 andPointY:359+50/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(530, 359, 63, 50)];
+        button.frame = CGRectMake(530, 359, 63, 50);
         
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
         [self zoomMapAndCenterAtPointX:197+113/2 andPointY:570+77/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(197, 570, 113, 77)];
+        button.frame = CGRectMake(197, 570, 113, 77);
     }
     
     self.highlightView.alpha = 0.3;
     self.highlightView.backgroundColor = [UIColor redColor];
     
     [imageView addSubview:self.highlightView];
+    [imageView addSubview:button];
 }
 
-
+-(void)tapShowDetail:(UIButton*)sender {
+    [self performSegueWithIdentifier:@"detail" sender:self];
+//    NSLog(@"button clicked");
+//    DetailViewController *detailViewController =
+//    [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+//    detailViewController.delegate = self;
+//    [self presentViewController:detailViewController animated:YES completion:nil];
+}
 /* Zoom map and center at pointX and pointY */
 // Something wrong with zoom!!
 -(void)zoomMapAndCenterAtPointX:(double) x andPointY:(double) y {
@@ -204,4 +224,8 @@
     
 }
 
+- (void)detailViewController:(DetailViewController *)viewController didChooseValue:(CGFloat)value {
+    
+    //[self.navigationController popViewControllerAnimated:YES];
+}
 @end

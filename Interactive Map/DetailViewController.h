@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BuildingDetail.h"
+@protocol DetailViewControllerDelegate;
 
 @interface DetailViewController : UIViewController
 
@@ -16,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *distance;
 @property (weak, nonatomic) IBOutlet UILabel *time;
-
+@property (nonatomic, weak) id<DetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) BuildingDetail *buildingDetail;
+
 
 @end
