@@ -16,15 +16,12 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *highlightView;
 @property (weak, nonatomic) IBOutlet UIView *subView;
-
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (nonatomic) int selected;
 
 @property (strong, nonatomic) NSArray *array;
 @property (strong, nonatomic) NSArray *details;
-
-
 @end
 
 @implementation ViewController
