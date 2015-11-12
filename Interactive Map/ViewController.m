@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
+@property (nonatomic) int selected;
 
 @property (strong, nonatomic) NSArray *array;
 @property (strong, nonatomic) NSArray *details;
@@ -40,7 +41,33 @@
     KL.address = @"Dr. Martin Luther King, Jr. Library, 150 East San Fernando Street, San Jose, CA 95112";
     KL.imageFile = @"kingLibrary.jpg";
     
-    self.details = [NSArray arrayWithObjects:KL, nil];
+    BuildingDetail *EB = [BuildingDetail new];
+    EB.name = @"Engineering Building";
+    EB.address = @"San José State University Charles W. Davidson College of Engineering, 1 Washington Square, San Jose, CA 95112";
+    EB.imageFile = @"engineeringBuilding.jpg";
+    
+    BuildingDetail *YUH = [BuildingDetail new];
+    YUH.name = @"Yoshihiro Uchida Hall​";
+    YUH.address = @"Yoshihiro Uchida Hall, San Jose, CA 95112";
+    YUH.imageFile = @"YUH.jpg";
+    
+    BuildingDetail *SU = [BuildingDetail new];
+    SU.name = @"Student Union";
+    SU.address = @"Student Union Building, San Jose, CA 95112";
+    SU.imageFile = @"studentUnion.jpg";
+    
+    BuildingDetail *BBC = [BuildingDetail new];
+    BBC.name = @"BBC";
+    BBC.address = @"Boccardo Business Complex, San Jose, CA 95112";
+    BBC.imageFile = @"BBC.jpg";
+    
+    BuildingDetail *SPG = [BuildingDetail new];
+    SPG.name = @"South​ ​Parking​ ​Garage";
+    SPG.address = @"San Jose State University South Garage, 330 South 7th Street, San Jose, CA 95112";
+    SPG.imageFile = @"SPG.png";
+
+    
+    self.details = [NSArray arrayWithObjects:KL,EB,YUH,SU,BBC,SPG, nil];
     
     
     
@@ -119,7 +146,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detail"]) {
         DetailViewController *detailViewController = segue.destinationViewController;
-        detailViewController.buildingDetail =[_details objectAtIndex:0];
+        detailViewController.buildingDetail =[_details objectAtIndex:_selected];
     }
 }
 
@@ -166,32 +193,34 @@
         [self zoomMapAndCenterAtPointX:73+48/2 andPointY:194+87/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(73, 194, 48, 87)];
         button.frame = CGRectMake(73, 194, 48, 87);
+        self.selected = 0;
         
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
         [self zoomMapAndCenterAtPointX:342+93/2 andPointY:196+102/2];
         self.highlightView = [[UIView alloc] init];
         [highlightView setFrame: CGRectMake(342, 196, 93, 102)];
         button.frame = CGRectMake(342, 196, 93, 102);
-        
+        self.selected = 1;
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
         [self zoomMapAndCenterAtPointX:62+66/2 andPointY:407+65/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(62, 407, 66, 65)];
         button.frame = CGRectMake(62, 407, 66, 65);
-        
+        self.selected = 2;
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
         [self zoomMapAndCenterAtPointX:337+86/2 andPointY:309+40/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(337, 311, 86, 40)];
         button.frame = CGRectMake(337, 311, 86, 40);
-        
+        self.selected = 3;
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
         [self zoomMapAndCenterAtPointX:530+63/2 andPointY:359+50/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(530, 359, 63, 50)];
         button.frame = CGRectMake(530, 359, 63, 50);
-        
+        self.selected = 4;
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
         [self zoomMapAndCenterAtPointX:197+113/2 andPointY:570+77/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(197, 570, 113, 77)];
         button.frame = CGRectMake(197, 570, 113, 77);
+        self.selected = 5;
     }
     
     self.highlightView.alpha = 0.3;
@@ -203,11 +232,7 @@
 
 -(void)tapShowDetail:(UIButton*)sender {
     [self performSegueWithIdentifier:@"detail" sender:self];
-//    NSLog(@"button clicked");
-//    DetailViewController *detailViewController =
-//    [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-//    detailViewController.delegate = self;
-//    [self presentViewController:detailViewController animated:YES completion:nil];
+
 }
 /* Zoom map and center at pointX and pointY */
 // Something wrong with zoom!!

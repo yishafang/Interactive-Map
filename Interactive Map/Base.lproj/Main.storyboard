@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -76,30 +77,30 @@
                         <viewControllerLayoutGuide type="top" id="Z1q-ld-ZGe"/>
                         <viewControllerLayoutGuide type="bottom" id="zvt-1a-f94"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="a7m-ja-LkE">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="a7m-ja-LkE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-qb-5Ok">
-                                <rect key="frame" x="135" y="289" width="51" height="21"/>
+                                <rect key="frame" x="27" y="306" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4P-W0-4TX">
-                                <rect key="frame" x="126" y="328" width="68" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4P-W0-4TX">
+                                <rect key="frame" x="27" y="349" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv3-9s-Rrf">
-                                <rect key="frame" x="124" y="380" width="72" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv3-9s-Rrf">
+                                <rect key="frame" x="27" y="394" width="72" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpx-H3-c8R">
-                                <rect key="frame" x="139" y="425" width="43" height="21"/>
+                                <rect key="frame" x="27" y="443" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -111,22 +112,22 @@
                                     <action selector="close:" destination="ijQ-Ql-61x" eventType="touchUpInside" id="0Wl-I8-fb1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-eI-pA1">
-                                <rect key="frame" x="27" y="83" width="267" height="184"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-eI-pA1">
+                                <rect key="frame" x="27" y="92" width="267" height="184"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Hpx-H3-c8R" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="431" id="NwD-xj-CV6"/>
+                            <constraint firstItem="Hpx-H3-c8R" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="centerYWithinMargins" constant="431" id="NwD-xj-CV6"/>
                             <constraint firstAttribute="centerX" secondItem="X4P-W0-4TX" secondAttribute="centerX" id="PMd-vt-0FO"/>
                             <constraint firstAttribute="centerX" secondItem="NVV-qb-5Ok" secondAttribute="centerX" id="VAX-RC-gv1"/>
                             <constraint firstAttribute="centerX" secondItem="vMq-eI-pA1" secondAttribute="centerX" id="XMx-IP-0gH"/>
                             <constraint firstAttribute="centerX" secondItem="Hpx-H3-c8R" secondAttribute="centerX" id="cXb-qR-GaQ"/>
                             <constraint firstItem="vMq-eI-pA1" firstAttribute="top" secondItem="Z1q-ld-ZGe" secondAttribute="bottom" constant="20" id="e1J-Bw-slM"/>
                             <constraint firstAttribute="centerX" secondItem="Hv3-9s-Rrf" secondAttribute="centerX" id="eNr-Cq-YBx"/>
-                            <constraint firstItem="X4P-W0-4TX" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="328" id="fJ4-G4-lxG"/>
-                            <constraint firstItem="Hv3-9s-Rrf" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="380" id="gg0-Z2-FM9"/>
-                            <constraint firstItem="NVV-qb-5Ok" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="topMargin" constant="273" id="xGN-2w-ppf"/>
+                            <constraint firstItem="X4P-W0-4TX" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="centerYWithinMargins" constant="328" id="fJ4-G4-lxG"/>
+                            <constraint firstItem="Hv3-9s-Rrf" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="centerY" constant="380" id="gg0-Z2-FM9"/>
+                            <constraint firstItem="NVV-qb-5Ok" firstAttribute="top" secondItem="a7m-ja-LkE" secondAttribute="centerY" constant="273" id="xGN-2w-ppf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s05-tH-Xbf"/>
