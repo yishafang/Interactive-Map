@@ -14,6 +14,5 @@
 @interface ViewController : UIViewController <UISearchDisplayDelegate>
 
 //@property (strong, nonatomic) DetailViewController *detailViewController;
-@property(nonatomic) int selectedIndex;
 @end
 
