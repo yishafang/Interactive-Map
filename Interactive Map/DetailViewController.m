@@ -18,10 +18,12 @@
     [super viewDidLoad];
     self.photo.image = [UIImage imageNamed:_buildingDetail.imageFile];
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.name.text = _buildingDetail.name;
     self.address.text = _buildingDetail.address;
+    
     [self changeImages];
 }
 
@@ -32,6 +34,7 @@
     self.photo.clipsToBounds = YES;
     [self.photo setImage:img];
 }
+
 - (IBAction)close:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
