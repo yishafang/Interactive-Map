@@ -109,6 +109,8 @@ CLLocationManager *locationManager;
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(tapRecognized:)];
     [scrollView addGestureRecognizer:rec];
+    
+    //test google api function
     [self getRouteData:(latitude) :longitude :37.332529 :-121.881028];
     NSLog(@"cool");
 }
