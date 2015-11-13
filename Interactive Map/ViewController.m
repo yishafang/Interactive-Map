@@ -10,12 +10,12 @@
 #import "BuildingDetail.h"
 #import "DetailViewController.h"
 
-@interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate>
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@interface ViewController ()  <UIScrollViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate>
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *highlightView;
-@property (weak, nonatomic) IBOutlet UIView *subView;
+@property (strong, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (nonatomic) int selected;
@@ -28,6 +28,8 @@
 @synthesize imageView;
 @synthesize scrollView;
 @synthesize highlightView;
+CLLocationManager *locationManager;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,9 +81,22 @@
     
     self.array = [[NSArray alloc] initWithObjects:@"King Library", @"Engineering Building", @"Yoshihiro Uchida Hall", @"Student Union", @"BBC", @"South Parking Garage", nil];
     
-    // Hard code user current location for testing
-    // This is wrong! Fix it later!!
-    self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(529, 188, 5, 5)];
+    //user's location.
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    [locationManager requestAlwaysAuthorization];
+//    [locationManager requestWhenInUseAuthorization];
+//    [locationManager startUpdatingLocation];
+//    CLLocation *location = [locationManager location];
+//    float longitude=location.coordinate.longitude;
+//    float latitude=location.coordinate.latitude;
+    //test
+    float longitude = -121.881557;
+    float latitude = 37.335706;
+    float x =660-(660 * (121.885975-fabs(longitude))/(121.885975 -121.876565));
+    float y =(694 - (694 * (latitude-37.331361)/(37.338800-37.331361)));
+    self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 5, 5)];
     self.currentLocation.opaque = 1;
     self.currentLocation.backgroundColor = [UIColor redColor];
     [imageView addSubview:self.currentLocation];
@@ -90,7 +105,8 @@
     self.currentLocation.clipsToBounds = YES;
     [self setRoundedView:_currentLocation toDiameter:15.0];
     
-    UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+    UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(tapRecognized:)];
     [scrollView addGestureRecognizer:rec];
     NSLog(@"cool");
 }
@@ -100,12 +116,22 @@
     NSLog(@"In tapRecognized!");
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
         CGPoint point = [recognizer locationInView:recognizer.view];
-        // point.x and point.y have the coordinates of the touch
+        if(point.x>73 && point.x<73+48 && point.y>194 &&point.y<194+87){
+            self.selected = 0;
+        }else if(point.x>342 && point.x<342+93 && point.y>196 &&point.y<196+102){
+            self.selected = 1;
+        }else if(point.x>62 && point.x<62+66 && point.y>407 &&point.y<407+65){
+            self.selected = 2;
+        }else if(point.x>337 && point.x<337+86 && point.y>311 &&point.y<311+40){
+            self.selected = 3;
+        }else if(point.x>530 && point.x<530+63 && point.y>359 &&point.y<359+50){
+            self.selected = 4;
+        }else if(point.x>197 && point.x<197+113 && point.y>570 &&point.y<570+77){
+            self.selected = 5;
+        }
+        [self performSegueWithIdentifier:@"detail" sender:self];
+
         NSLog(@"%lf %lf", point.x, point.y);
-        
-        // open detail view controller
-//        DetailViewController* detailViewController = [[DetailViewController alloc] init];
-        
     }
 }
 
@@ -180,59 +206,35 @@
 
 /* Highlight the building which user is searing for */
 - (void)highlightBuilding:(NSString *)building {
-    //NSLog(@"In highlightBuilding");
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(tapShowDetail:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Test" forState:UIControlStateNormal];
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
         [self zoomMapAndCenterAtPointX:73+48/2 andPointY:194+87/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(73, 194, 48, 87)];
-        button.frame = CGRectMake(73, 194, 48, 87);
-        self.selected = 0;
-        
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
         [self zoomMapAndCenterAtPointX:342+93/2 andPointY:196+102/2];
         self.highlightView = [[UIView alloc] init];
         [highlightView setFrame: CGRectMake(342, 196, 93, 102)];
-        button.frame = CGRectMake(342, 196, 93, 102);
-        self.selected = 1;
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
         [self zoomMapAndCenterAtPointX:62+66/2 andPointY:407+65/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(62, 407, 66, 65)];
-        button.frame = CGRectMake(62, 407, 66, 65);
-        self.selected = 2;
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
         [self zoomMapAndCenterAtPointX:337+86/2 andPointY:309+40/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(337, 311, 86, 40)];
-        button.frame = CGRectMake(337, 311, 86, 40);
-        self.selected = 3;
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
         [self zoomMapAndCenterAtPointX:530+63/2 andPointY:359+50/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(530, 359, 63, 50)];
-        button.frame = CGRectMake(530, 359, 63, 50);
-        self.selected = 4;
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
         [self zoomMapAndCenterAtPointX:197+113/2 andPointY:570+77/2];
         self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(197, 570, 113, 77)];
-        button.frame = CGRectMake(197, 570, 113, 77);
-        self.selected = 5;
     }
     
     self.highlightView.alpha = 0.3;
     self.highlightView.backgroundColor = [UIColor redColor];
     
     [imageView addSubview:self.highlightView];
-    [imageView addSubview:button];
 }
 
--(void)tapShowDetail:(UIButton*)sender {
-    [self performSegueWithIdentifier:@"detail" sender:self];
-
-}
 /* Zoom map and center at pointX and pointY */
-// Something wrong with zoom!!
+
 -(void)zoomMapAndCenterAtPointX:(double) x andPointY:(double) y {
     CGRect zoomRect;
     zoomRect.size.height = scrollView.frame.size.height;
@@ -240,14 +242,8 @@
     
     zoomRect.origin.x = x - (zoomRect.size.width  / 2.0);
     zoomRect.origin.y = y - (zoomRect.size.height / 2.0);
-    
-    
     [scrollView zoomToRect:zoomRect animated:YES];
     
 }
 
-- (void)detailViewController:(DetailViewController *)viewController didChooseValue:(CGFloat)value {
-    
-    //[self.navigationController popViewControllerAnimated:YES];
-}
 @end
