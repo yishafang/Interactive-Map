@@ -39,6 +39,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void) updateDisLabelWithString:(NSString*)string {
+    self.distance.text = string;
+}
+
+-(void) updateTimeLabelWithString:(NSString*)string {
+    self.time.text = string;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

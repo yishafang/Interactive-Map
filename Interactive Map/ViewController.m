@@ -216,7 +216,6 @@ CLLocationManager *locationManager;
         detailViewController.buildingDetail =[_details objectAtIndex:_selected];
         NSLog(@"before segue jump %@", self.distance);
         NSLog(@"before segue jump %@", self.time);
-
         detailViewController.distance.text = [NSString stringWithString:self.distance ];
         detailViewController.time.text =[NSString stringWithString:self.time];
     }
