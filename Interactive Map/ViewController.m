@@ -19,7 +19,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (nonatomic) int selected;
-
+@property  NSString *time;
+@property  NSString *distance;
+@property (strong, nonatomic)CLLocation *curLoc;
 @property (strong, nonatomic) NSArray *array;
 @property (strong, nonatomic) NSArray *details;
 @end
@@ -82,21 +84,18 @@ CLLocationManager *locationManager;
     self.array = [[NSArray alloc] initWithObjects:@"King Library", @"Engineering Building", @"Yoshihiro Uchida Hall", @"Student Union", @"BBC", @"South Parking Garage", nil];
     
     //user's location.
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    [locationManager requestAlwaysAuthorization];
-//    [locationManager requestWhenInUseAuthorization];
-//    [locationManager startUpdatingLocation];
-//    CLLocation *location = [locationManager location];
-//    float longitude=location.coordinate.longitude;
-//    float latitude=location.coordinate.latitude;
-    //test
-    float longitude = -121.881557;
-    float latitude = 37.335706;
-    //
-    float x =660-(660 * (121.885975-fabs(longitude))/(121.885975 -121.876565));
-    float y =(694 - (694 * (latitude-37.331361)/(37.338800-37.331361)));
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestAlwaysAuthorization];
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+    self.curLoc = [locationManager location];
+    float longitude = self.curLoc.coordinate.longitude;
+    float latitude = self.curLoc.coordinate.latitude;
+  
+    float x =630-(630 * (121.885975-fabs(longitude))/(121.885975 -121.876565));
+    float y =(700 - (700 * (latitude-37.331361)/(37.338800-37.331361)));
     self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 5, 5)];
     self.currentLocation.opaque = 1;
     self.currentLocation.backgroundColor = [UIColor redColor];
@@ -105,34 +104,75 @@ CLLocationManager *locationManager;
     // Set user current location as a small red circle
     self.currentLocation.clipsToBounds = YES;
     [self setRoundedView:_currentLocation toDiameter:15.0];
-    
+    NSLog(@"%@", self.time);
+    NSLog(@"%@", self.distance);
+    NSLog(@"cool");
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(tapRecognized:)];
     [scrollView addGestureRecognizer:rec];
-    
-    //test google api function
-    [self getRouteData:(latitude) :longitude :37.332529 :-121.881028];
-    NSLog(@"cool");
 }
 
+-(void)viewWillAppear {
+    // If the delegate is still not being set, try putting this code into viewDidAppear
+    [locationManager startUpdatingLocation];
+//  CLLocation *location = [locationManager location];
+//  float longitude=location.coordinate.longitude;
+//  float latitude=location.coordinate.latitude;
+//  self.curLoc = location;
+    //test
+    
+}
 
 - (void)tapRecognized:(UITapGestureRecognizer *)recognizer {
     NSLog(@"In tapRecognized!");
+    NSArray *temp;
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
         CGPoint point = [recognizer locationInView:recognizer.view];
         if(point.x>73 && point.x<73+48 && point.y>194 &&point.y<194+87){
             self.selected = 0;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+               self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+            self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1]; 
+            }
         }else if(point.x>342 && point.x<342+93 && point.y>196 &&point.y<196+102){
             self.selected = 1;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+            }
         }else if(point.x>62 && point.x<62+66 && point.y>407 &&point.y<407+65){
             self.selected = 2;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+            }
         }else if(point.x>337 && point.x<337+86 && point.y>311 &&point.y<311+40){
             self.selected = 3;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+            }
         }else if(point.x>530 && point.x<530+63 && point.y>359 &&point.y<359+50){
             self.selected = 4;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+            }
         }else if(point.x>197 && point.x<197+113 && point.y>570 &&point.y<570+77){
             self.selected = 5;
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            if([temp count]>1) {
+                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
+                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+            }
         }
+        
+        
         [self performSegueWithIdentifier:@"detail" sender:self];
 
         NSLog(@"%lf %lf", point.x, point.y);
@@ -174,6 +214,11 @@ CLLocationManager *locationManager;
     if ([segue.identifier isEqualToString:@"detail"]) {
         DetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.buildingDetail =[_details objectAtIndex:_selected];
+        NSLog(@"before segue jump %@", self.distance);
+        NSLog(@"before segue jump %@", self.time);
+
+        detailViewController.distance.text = [NSString stringWithString:self.distance ];
+        detailViewController.time.text =[NSString stringWithString:self.time];
     }
 }
 
@@ -249,8 +294,9 @@ CLLocationManager *locationManager;
     
 }
 
--(NSString*) getRouteData :(double)startPointLatitude :(double)startPointLongitude :(double)stopPointLatitude :(double)stopPointLongitude{
+-(NSArray*) getRouteData :(double)startPointLatitude :(double)startPointLongitude :(double)stopPointLatitude :(double)stopPointLongitude{
     NSString* durationValue;
+    NSString* distanceValue;
     
     NSString* apiUrlStr = [NSString stringWithFormat:@"https://maps.google.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%f,%f&mode=walking&language=en&key=AIzaSyD-orh1g7h7HLH156pm9tr_CooICfiMTL0", startPointLatitude, startPointLongitude, stopPointLatitude, stopPointLongitude];
     
@@ -268,6 +314,8 @@ CLLocationManager *locationManager;
             if ([rows count]>0){
                 NSArray *elements =[(NSDictionary*)[rows objectAtIndex:0] objectForKey:@"elements"] ;
                 NSDictionary *duration =[(NSDictionary*)[elements objectAtIndex:0] objectForKey:@"duration"];
+                NSDictionary *dis =[(NSDictionary*)[elements objectAtIndex:0] objectForKey:@"distance"];
+                distanceValue = [dis objectForKey:@"text"];
                 durationValue = [duration objectForKey:@"text"];
             }else{
             NSLog(@"empty");
@@ -275,7 +323,7 @@ CLLocationManager *locationManager;
         NSLog(@"result = %@", durationValue);
         }
     }
-     return durationValue;
+    return [NSArray arrayWithObjects:durationValue, distanceValue, nil];
 }
 
 
