@@ -22,10 +22,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.name.text = _buildingDetail.name;
-    
     self.address.text = _buildingDetail.address;
-//    self.address.lineBreakMode = NSLineBreakByWordWrapping;
-//    self.address.numberOfLines = 0;
     
     [self changeImages];
 }
