@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>9E003731-9537-4461-8C3E-678D4EFD1559</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Interactive Map</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9BA537BDFA32A4151DBB56F42ACB6EC1E302F211</key>
 		<string>https://github.com/yishafang/Interactive-Map.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Interactive Map.xcodeproj/project.xcworkspace</string>
+	<string>Interactive Map.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9BA537BDFA32A4151DBB56F42ACB6EC1E302F211</key>
