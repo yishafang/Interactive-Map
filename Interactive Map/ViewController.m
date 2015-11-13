@@ -94,6 +94,7 @@ CLLocationManager *locationManager;
     //test
     float longitude = -121.881557;
     float latitude = 37.335706;
+    //
     float x =660-(660 * (121.885975-fabs(longitude))/(121.885975 -121.876565));
     float y =(694 - (694 * (latitude-37.331361)/(37.338800-37.331361)));
     self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 5, 5)];
@@ -183,22 +184,21 @@ CLLocationManager *locationManager;
     
     NSString *inputStr = searchBar.text;
     NSLog(@"%@", inputStr);
-    
+    int i=0;
+    inputStr = [inputStr lowercaseString];
     Boolean hasBuilding =false;
-    for (int i = 0; i < [self.array count]; i++) {
-        NSString *buildingName = [self.array objectAtIndex:i];
+    for (;i < [self.array count]; i++) {
+        NSString *buildingName = [[self.array objectAtIndex:i] lowercaseString];
         //NSLog(@"name in array is: %@", buildingName);
         if ([inputStr isEqualToString:buildingName]) {
             hasBuilding = true;
             break;
-        } else {
-            hasBuilding = false;
         }
     }
     
     if (hasBuilding) {
         NSLog(@"has building: %@ ", inputStr);
-        [self highlightBuilding:inputStr];
+        [self highlightBuilding:[self.array objectAtIndex:i]];
     } else {
         NSLog(@"No result.");
     }
