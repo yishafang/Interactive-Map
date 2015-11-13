@@ -109,6 +109,7 @@ CLLocationManager *locationManager;
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(tapRecognized:)];
     [scrollView addGestureRecognizer:rec];
+    [self getRouteData:(latitude) :longitude :37.332529 :-121.881028];
     NSLog(@"cool");
 }
 
@@ -245,5 +246,35 @@ CLLocationManager *locationManager;
     [scrollView zoomToRect:zoomRect animated:YES];
     
 }
+
+-(NSString*) getRouteData :(double)startPointLatitude :(double)startPointLongitude :(double)stopPointLatitude :(double)stopPointLongitude{
+    NSString* durationValue;
+    
+    NSString* apiUrlStr = [NSString stringWithFormat:@"https://maps.google.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%f,%f&mode=walking&language=en&key=AIzaSyD-orh1g7h7HLH156pm9tr_CooICfiMTL0", startPointLatitude, startPointLongitude, stopPointLatitude, stopPointLongitude];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiUrlStr]];
+    
+    [request setTimeoutInterval:15];
+    
+    //NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSError *error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(error == nil){
+        NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        if(error==nil){
+            NSArray *rows = [jsonArray objectForKey:@"rows"];
+            if ([rows count]>0){
+                NSArray *elements =[(NSDictionary*)[rows objectAtIndex:0] objectForKey:@"elements"] ;
+                NSDictionary *duration =[(NSDictionary*)[elements objectAtIndex:0] objectForKey:@"duration"];
+                durationValue = [duration objectForKey:@"text"];
+            }else{
+            NSLog(@"empty");
+            }
+        NSLog(@"result = %@", durationValue);
+        }
+    }
+     return durationValue;
+}
+
 
 @end
