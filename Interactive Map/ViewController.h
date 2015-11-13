@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <CoreLocation/CoreLocation.h>
+
 
 //@class DetailViewController;
 
-@interface ViewController : UIViewController <UISearchDisplayDelegate>
+@interface ViewController : UIViewController <UISearchDisplayDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate>
 
 //@property (strong, nonatomic) DetailViewController *detailViewController;
 @end
