@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (nonatomic, weak) id<DetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) BuildingDetail *buildingDetail;
+@property (nonatomic) NSString *dis;
+@property (nonatomic) NSString *tim;
 
 
 @end

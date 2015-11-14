@@ -9,13 +9,14 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.distance.text = self.dis;
+    self.time.text = self.tim;
     self.photo.image = [UIImage imageNamed:_buildingDetail.imageFile];
 }
 

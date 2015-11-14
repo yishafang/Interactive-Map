@@ -19,8 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *currentLocation;
 
 @property (nonatomic) int selected;
-@property  NSString *time;
-@property  NSString *distance;
+@property  (nonatomic) NSString *time;
+@property  (nonatomic) NSString *distance;
 @property (strong, nonatomic)CLLocation *curLoc;
 @property (strong, nonatomic) NSArray *array;
 @property (strong, nonatomic) NSArray *details;
@@ -133,7 +133,8 @@ CLLocationManager *locationManager;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
             if([temp count]>1) {
                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-            self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1]; 
+            self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>342 && point.x<342+93 && point.y>196 &&point.y<196+102){
             self.selected = 1;
@@ -141,6 +142,7 @@ CLLocationManager *locationManager;
             if([temp count]>1) {
                 self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
                 self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>62 && point.x<62+66 && point.y>407 &&point.y<407+65){
             self.selected = 2;
@@ -148,6 +150,7 @@ CLLocationManager *locationManager;
             if([temp count]>1) {
                 self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
                 self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>337 && point.x<337+86 && point.y>311 &&point.y<311+40){
             self.selected = 3;
@@ -155,6 +158,7 @@ CLLocationManager *locationManager;
             if([temp count]>1) {
                 self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
                 self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>530 && point.x<530+63 && point.y>359 &&point.y<359+50){
             self.selected = 4;
@@ -162,6 +166,7 @@ CLLocationManager *locationManager;
             if([temp count]>1) {
                 self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
                 self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>197 && point.x<197+113 && point.y>570 &&point.y<570+77){
             self.selected = 5;
@@ -169,11 +174,12 @@ CLLocationManager *locationManager;
             if([temp count]>1) {
                 self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
                 self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                  [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }
         
         
-        [self performSegueWithIdentifier:@"detail" sender:self];
+      
 
         NSLog(@"%lf %lf", point.x, point.y);
     }
@@ -212,12 +218,12 @@ CLLocationManager *locationManager;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detail"]) {
-        DetailViewController *detailViewController = segue.destinationViewController;
+        DetailViewController *detailViewController= segue.destinationViewController;
         detailViewController.buildingDetail =[_details objectAtIndex:_selected];
+        detailViewController.dis = self.distance;
+        detailViewController.tim = self.time;
         NSLog(@"before segue jump %@", self.distance);
         NSLog(@"before segue jump %@", self.time);
-        detailViewController.distance.text = [NSString stringWithString:self.distance ];
-        detailViewController.time.text =[NSString stringWithString:self.time];
     }
 }
 
