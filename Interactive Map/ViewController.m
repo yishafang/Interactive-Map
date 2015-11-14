@@ -91,11 +91,10 @@ CLLocationManager *locationManager;
     [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];
     self.curLoc = [locationManager location];
-    float longitude = self.curLoc.coordinate.longitude;
-    float latitude = self.curLoc.coordinate.latitude;
   
-    float x =630-(630 * (121.885975-fabs(longitude))/(121.885975 -121.876565));
-    float y =(700 - (700 * (latitude-37.331361)/(37.338800-37.331361)));
+    float x = 707 * (fabs(self.curLoc.coordinate.longitude) -121.886478)/(121.876243 -121.886478);
+    float y = 707 - (707 * (self.curLoc.coordinate.latitude-37.331361)/(37.338800-37.331361));
+    
     self.currentLocation = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 5, 5)];
     self.currentLocation.opaque = 1;
     self.currentLocation.backgroundColor = [UIColor redColor];
@@ -128,7 +127,7 @@ CLLocationManager *locationManager;
     NSArray *temp;
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
         CGPoint point = [recognizer locationInView:recognizer.view];
-        if(point.x>73 && point.x<73+48 && point.y>194 &&point.y<194+87){
+        if(point.x>34 && point.x<34+55 && point.y>276 &&point.y<276+69){
             self.selected = 0;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.335645  :-121.885525];
             if([temp count]>1) {
@@ -136,7 +135,7 @@ CLLocationManager *locationManager;
                 self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
-        }else if(point.x>342 && point.x<342+93 && point.y>196 &&point.y<196+102){
+        }else if(point.x>274 && point.x<274+93 && point.y>131 &&point.y<131+79){
             self.selected = 1;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.337032  :-121.881966];
             if([temp count]>1) {
@@ -144,7 +143,7 @@ CLLocationManager *locationManager;
                 self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
-        }else if(point.x>62 && point.x<62+66 && point.y>407 &&point.y<407+65){
+        }else if(point.x>130 && point.x<130+62 && point.y>463 &&point.y<463+63){
             self.selected = 2;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.333619  :-121.883676];
             if([temp count]>1) {
@@ -152,7 +151,7 @@ CLLocationManager *locationManager;
                 self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
-        }else if(point.x>337 && point.x<337+86 && point.y>311 &&point.y<311+40){
+        }else if(point.x>344 && point.x<344+66 && point.y>220 &&point.y<220+36){
             self.selected = 3;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.336479  :-121.880769];
             if([temp count]>1) {
@@ -160,7 +159,7 @@ CLLocationManager *locationManager;
                 self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
-        }else if(point.x>530 && point.x<530+63 && point.y>359 &&point.y<359+50){
+        }else if(point.x>525 && point.x<525+47 && point.y>178 &&point.y<178+49){
             self.selected = 4;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.336615  :-121.878576];
             if([temp count]>1) {
@@ -168,7 +167,7 @@ CLLocationManager *locationManager;
                 self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
-        }else if(point.x>197 && point.x<197+113 && point.y>570 &&point.y<570+77){
+        }else if(point.x>342 && point.x<342+100 && point.y>523 &&point.y<523+63){
             self.selected = 5;
             temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.333102  :-121.880821];
             if([temp count]>1) {
@@ -260,24 +259,24 @@ CLLocationManager *locationManager;
 /* Highlight the building which user is searing for */
 - (void)highlightBuilding:(NSString *)building {
     if ([building isEqualToString:[self.array objectAtIndex:0]]) {  // King Library
-        [self zoomMapAndCenterAtPointX:73+48/2 andPointY:194+87/2];
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(73, 194, 48, 87)];
+        [self zoomMapAndCenterAtPointX:34+55/2 andPointY:276+69/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(34, 276, 55, 69)];
     } else if ([building isEqualToString:[self.array objectAtIndex:1]]) {  // Engineering Building
-        [self zoomMapAndCenterAtPointX:342+93/2 andPointY:196+102/2];
+        [self zoomMapAndCenterAtPointX:274+93/2 andPointY:131+79/2];
         self.highlightView = [[UIView alloc] init];
-        [highlightView setFrame: CGRectMake(342, 196, 93, 102)];
+        [highlightView setFrame: CGRectMake(274, 131, 93, 79)];
     } else if ([building isEqualToString:[self.array objectAtIndex:2]]) {  // Yoshihiro Uchida Hall
-        [self zoomMapAndCenterAtPointX:62+66/2 andPointY:407+65/2];
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(62, 407, 66, 65)];
+        [self zoomMapAndCenterAtPointX:130+62/2 andPointY:463+63/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(130, 463, 62, 63)];
     } else if ([building isEqualToString:[self.array objectAtIndex:3]]) {  // Student Union
-        [self zoomMapAndCenterAtPointX:337+86/2 andPointY:309+40/2];
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(337, 311, 86, 40)];
+        [self zoomMapAndCenterAtPointX:344+66/2 andPointY:220+36/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(344, 220, 66, 36)];
     } else if ([building isEqualToString:[self.array objectAtIndex:4]]) {  // BBC
-        [self zoomMapAndCenterAtPointX:530+63/2 andPointY:359+50/2];
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(530, 359, 63, 50)];
+        [self zoomMapAndCenterAtPointX:525+47/2 andPointY:178+49/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(525, 178, 47, 49)];
     } else if ([building isEqualToString:[self.array objectAtIndex:5]]) {  // South Parking Garage
-        [self zoomMapAndCenterAtPointX:197+113/2 andPointY:570+77/2];
-        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(197, 570, 113, 77)];
+        [self zoomMapAndCenterAtPointX:342+100/2 andPointY:523+63/2];
+        self.highlightView = [[UIView alloc] initWithFrame:CGRectMake(342, 523, 100, 63)];
     }
     
     self.highlightView.alpha = 0.3;

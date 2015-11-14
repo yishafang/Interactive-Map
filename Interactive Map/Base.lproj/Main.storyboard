@@ -20,7 +20,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="3OV-JS-BmD">
                                 <rect key="frame" x="-20" y="64" width="360" height="520"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="campusmap.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FaV-us-4m3">
+                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="map2.png" translatesAutoresizingMaskIntoConstraints="NO" id="FaV-us-4m3">
                                         <rect key="frame" x="20" y="0.0" width="320" height="504"/>
                                     </imageView>
                                 </subviews>
@@ -149,6 +149,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="campusmap.jpg" width="660" height="694"/>
+        <image name="map2.png" width="707" height="707"/>
     </resources>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B130C0D1BF6BDA00031631A /* map2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B130C0C1BF6BDA00031631A /* map2.png */; };
 		B61A81151BE2E06800F1BE1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B61A81141BE2E06800F1BE1E /* main.m */; };
 		B61A81181BE2E06800F1BE1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B61A81171BE2E06800F1BE1E /* AppDelegate.m */; };
 		B61A811B1BE2E06800F1BE1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61A811A1BE2E06800F1BE1E /* ViewController.m */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B130C0C1BF6BDA00031631A /* map2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2.png; sourceTree = "<group>"; };
 		B61A810F1BE2E06800F1BE1E /* Interactive Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Interactive Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61A81131BE2E06800F1BE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B61A81141BE2E06800F1BE1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				B6B33E211BEED25B00A7043F /* BuildingDetail.h */,
 				B6B33E221BEED25B00A7043F /* BuildingDetail.m */,
 				B61A81211BE2E06800F1BE1E /* LaunchScreen.xib */,
+				3B130C0C1BF6BDA00031631A /* map2.png */,
 				B64A73521BEA8F6C002C954D /* campusmap.jpg */,
 				B6B33E241BEED7BA00A7043F /* YUH.jpg */,
 				B6B33E2E1BEED7EE00A7043F /* SPG.png */,
@@ -235,6 +238,7 @@
 				B61A81231BE2E06800F1BE1E /* LaunchScreen.xib in Resources */,
 				B6B33E2D1BEED7BA00A7043F /* BBC.jpg in Resources */,
 				B61A81201BE2E06800F1BE1E /* Images.xcassets in Resources */,
+				3B130C0D1BF6BDA00031631A /* map2.png in Resources */,
 				B6B33E2B1BEED7BA00A7043F /* kingLibrary.jpg in Resources */,
 				B6B33E291BEED7BA00A7043F /* YUH.jpg in Resources */,
 				B64A73531BEA8F6C002C954D /* campusmap.jpg in Resources */,
