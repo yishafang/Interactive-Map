@@ -130,50 +130,50 @@ CLLocationManager *locationManager;
         CGPoint point = [recognizer locationInView:recognizer.view];
         if(point.x>73 && point.x<73+48 && point.y>194 &&point.y<194+87){
             self.selected = 0;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.335645  :-121.885525];
             if([temp count]>1) {
-               self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-            self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+               self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>342 && point.x<342+93 && point.y>196 &&point.y<196+102){
             self.selected = 1;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.337032  :-121.881966];
             if([temp count]>1) {
-                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>62 && point.x<62+66 && point.y>407 &&point.y<407+65){
             self.selected = 2;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.333619  :-121.883676];
             if([temp count]>1) {
-                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>337 && point.x<337+86 && point.y>311 &&point.y<311+40){
             self.selected = 3;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.336479  :-121.880769];
             if([temp count]>1) {
-                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>530 && point.x<530+63 && point.y>359 &&point.y<359+50){
             self.selected = 4;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.336615  :-121.878576];
             if([temp count]>1) {
-                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }else if(point.x>197 && point.x<197+113 && point.y>570 &&point.y<570+77){
             self.selected = 5;
-            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028];
+            temp =[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.333102  :-121.880821];
             if([temp count]>1) {
-                self.time =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:0];
-                self.distance =[[self getRouteData:self.curLoc.coordinate.latitude :self.curLoc.coordinate.longitude :37.332529  :-121.881028] objectAtIndex:1];
+                self.time =[temp objectAtIndex:0];
+                self.distance =[temp objectAtIndex:1];
                   [self performSegueWithIdentifier:@"detail" sender:self];
             }
         }
